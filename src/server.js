@@ -1,29 +1,33 @@
-const express = require('express');
-const imageRoutes = require('./routes/imageRoutes');
-const helmet = require('helmet');
-const cors = require('cors');
-const morgan = require('morgan');
-const rateLimit = require('express-rate-limit');
-const hpp = require('hpp');
-const compression = require('compression');
-const Contador = require('./models/Contador');
+const express = require("express");
+const imageRoutes = require("./routes/imageRoutes");
+const helmet = require("helmet");
+const cors = require("cors");
+const morgan = require("morgan");
+const rateLimit = require("express-rate-limit");
+const hpp = require("hpp");
+const compression = require("compression");
+const Contador = require("./models/Contador");
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
 const corsOptions = {
-  methods: 'GET',
-  origin: '*'
+  methods: "GET",
+  origin: "*",
 };
 
-app.use(helmet());
+app.use(
+  helmet({
+    crossOriginResourcePolicy: false,
+  })
+);
 app.use(cors(corsOptions));
-app.use(morgan('dev'));
+app.use(morgan("dev"));
 
 /* ratelimit */
 const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, 
-  max: 100, 
+  windowMs: 15 * 60 * 1000,
+  max: 100,
 });
 
 app.use(limiter);
@@ -31,7 +35,7 @@ app.use(hpp());
 
 app.use(compression());
 
-app.use('/api', imageRoutes);
+app.use("/api", imageRoutes);
 
 app.use(async (req, res, next) => {
   try {
@@ -40,18 +44,18 @@ app.use(async (req, res, next) => {
     await contador.save();
     next();
   } catch (err) {
-      console.error(err);
-      res.status(500).json({ error: 'Erro ao contar as requisições.' });
+    console.error(err);
+    res.status(500).json({ error: "Erro ao contar as requisições." });
   }
 });
 
 app.use((req, res, next) => {
-  res.status(404).json({ msg: 'Não encontrado' });
+  res.status(404).json({ msg: "Não encontrado" });
 });
 
 app.use((err, req, res, next) => {
   if (err) {
-    res.status(405).json({ message: 'Método não permitido' });
+    res.status(405).json({ message: "Método não permitido" });
   } else {
     next();
   }

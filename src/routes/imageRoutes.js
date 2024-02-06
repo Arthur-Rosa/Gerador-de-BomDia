@@ -4,7 +4,7 @@ const imageController = require('../controllers/imageController');
 
 const router = express.Router();
 
-router.get('/gerar-imagem',
+router.get('/generate',
   [
     query('periodo').default('manha').isIn(['manha', 'tarde', 'noite']).withMessage("Período inválido, por favor use 'manha', 'tarde' ou 'noite'."),
     query('tipo').default('png').isIn(['png', 'jpg']).withMessage("Tipo inválido, por favor use 'png', 'jpg' ou 'svg'.")
