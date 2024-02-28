@@ -1,6 +1,5 @@
 const { validationResult } = require("express-validator");
 const generateImageService = require("../services/generateImageService");
-const Contador = require("../models/Contador");
 
 exports.generateImage = async (req, res) => {
   const errors = validationResult(req);

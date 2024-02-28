@@ -6,7 +6,6 @@ const morgan = require("morgan");
 const rateLimit = require("express-rate-limit");
 const hpp = require("hpp");
 const compression = require("compression");
-const Contador = require("./models/Contador");
 const path = require('path');
 
 const app = express();
@@ -49,18 +48,6 @@ app.use("/", (req, res) => {
     version: 0.9,
     status: "ok"
   })
-});
-
-app.use(async (req, res, next) => {
-  try {
-    const contador = await Contador.findOne();
-    contador.contagem++;
-    await contador.save();
-    next();
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: "Erro ao contar as requisições." });
-  }
 });
 
 app.use((req, res, next) => {
