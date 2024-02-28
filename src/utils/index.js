@@ -1,6 +1,5 @@
 const moment = require("moment");
-
-moment.locale("pt-br");
+require('moment/locale/pt-br');
 
 async function getImageDimension(image) {
   const width = await image.getWidth();
@@ -20,14 +19,16 @@ function getDimensionCentralPosition({ imgDimension, txtDimension }) {
 }
 
 async function getExactlyDay() {
-  const numberDay = await moment().locale('pt-br').format("d");
+  moment.locale("pt-br");
+
+  const numberDay = await moment().format("d");
   var weekDay;
 
   if (numberDay == 6 || numberDay == 0) {
-    const day = await moment().locale('pt-br').format("dddd");
+    const day = await moment().format("dddd");
     weekDay = `um ótimo ${day}`;
   } else {
-    const day = await moment().locale('pt-br').format("dddd");
+    const day = await moment().format("dddd");
     weekDay = `uma ótima ${day}`;
   }
 
