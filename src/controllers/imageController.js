@@ -1,6 +1,6 @@
 const { validationResult } = require("express-validator");
 const generateImageService = require("../services/generateImageService");
-const Contador = require("../models/Contador");
+// const Contador = require("../models/Contador");
 
 exports.generateImage = async (req, res) => {
   const errors = validationResult(req);
@@ -22,7 +22,7 @@ exports.generateImage = async (req, res) => {
 
 exports.count = async (req, res) => {
   try {
-    const contador = await Contador.findOne();
+    // const contador = await Contador.findOne();
 
     console.log(contador);
 
