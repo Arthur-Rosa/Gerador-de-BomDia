@@ -20,9 +20,7 @@ function getDimensionCentralPosition({ imgDimension, txtDimension }) {
 }
 
 async function getExactlyDay() {
-  moment.locale('pt-br');
-  
-  const numberDay = await moment().format("d");
+  const numberDay = await moment().locale('pt-br').format("d");
   var weekDay;
 
   if (numberDay == 6 || numberDay == 0) {
