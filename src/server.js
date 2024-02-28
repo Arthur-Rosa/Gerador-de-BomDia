@@ -37,6 +37,8 @@ app.use(compression());
 
 app.use("/api", imageRoutes);
 
+app.use('/static', express.static(path.join(__dirname, 'public')));
+
 app.use("/", (req, res) => {
   return res.status(200).json({
     name: "bomdia-generator",

@@ -12,17 +12,17 @@ const generateImageService = async (periodo) => {
   const image = await jimp.read(link);
 
   const font78White = await jimp.loadFont(
-    path.resolve("src", "fonts", "open-sans-64-white.fnt")
+    path.resolve("src", "public", "open-sans-64-white.fnt")
   );
   const font28White = await jimp.loadFont(
-    path.resolve("src", "fonts", "open-sans-32-white.fnt")
+    path.resolve("src", "public", "open-sans-32-white.fnt")
   );
 
   const font78Black = await jimp.loadFont(
-    path.resolve("src", "fonts", "open-sans-64-black.fnt")
+    path.resolve("src", "public", "open-sans-64-black.fnt")
   );
   const font28Black = await jimp.loadFont(
-    path.resolve("src", "fonts", "open-sans-32-black.fnt")
+    path.resolve("src", "public", "open-sans-32-black.fnt")
   );
 
   const randomPhrase = getRandomPhrase();
