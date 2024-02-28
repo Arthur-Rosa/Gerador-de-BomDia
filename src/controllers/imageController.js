@@ -21,7 +21,7 @@ exports.generateImage = async (req, res) => {
 
 exports.count = async (req, res) => {
   try {
-    const contador = await Contador.findOne();
+    // const contador = await Contador.findOne();
 
     console.log(contador);
 
