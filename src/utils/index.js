@@ -24,10 +24,10 @@ async function getExactlyDay() {
   var weekDay;
 
   if (numberDay == 6 || numberDay == 0) {
-    const day = await moment().format("dddd");
+    const day = await moment().locale('pt-br').format("dddd");
     weekDay = `um ótimo ${day}`;
   } else {
-    const day = await moment().format("dddd");
+    const day = await moment().locale('pt-br').format("dddd");
     weekDay = `uma ótima ${day}`;
   }
 
