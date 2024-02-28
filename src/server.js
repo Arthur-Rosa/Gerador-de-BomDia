@@ -37,6 +37,14 @@ app.use(compression());
 
 app.use("/api", imageRoutes);
 
+app.use("/", (req, res) => {
+  return res.status(200).json({
+    name: "bomdia-generator",
+    version: 0.9,
+    status: "ok"
+  })
+});
+
 app.use(async (req, res, next) => {
   try {
     const contador = await Contador.findOne();
