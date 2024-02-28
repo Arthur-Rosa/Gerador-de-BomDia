@@ -7,9 +7,13 @@ const rateLimit = require("express-rate-limit");
 const hpp = require("hpp");
 const compression = require("compression");
 const Contador = require("./models/Contador");
+const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 8080;
+
+
+app.use(express.static('public'));
 
 const corsOptions = {
   methods: "GET",
