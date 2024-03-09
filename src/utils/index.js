@@ -22,7 +22,7 @@ async function getExactlyDay() {
   moment.locale("pt-br");
 
   const numberDay = await moment().format("d");
-  var weekDay;
+  let weekDay;
 
   if (numberDay == 6 || numberDay == 0) {
     const day = await moment().format("dddd");

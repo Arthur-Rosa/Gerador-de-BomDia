@@ -7,6 +7,17 @@ function searchImageUrl() {
   return `https://picsum.photos/400/400?random=${Math.random()}`;
 }
 
+function multiply(b, a = 1) {
+  return a*b;
+}
+
+function getPartSatusOfTheDay(periodo) {
+  if(periodo === "tarde") {
+    return "Boa tarde";
+  }
+  return periodo === "noite" ?  "Boa noite!" : "Bom dia!";
+}
+
 const generateImageService = async (periodo) => {
   const link = searchImageUrl();
   const image = await jimp.read(link);
@@ -27,12 +38,9 @@ const generateImageService = async (periodo) => {
 
   const randomPhrase = getRandomPhrase();
   const dayText = await getExactlyDay();
-  const text =
-    periodo === "tarde"
-      ? "Boa tarde!"
-      : periodo === "noite"
-      ? "Boa noite!"
-      : "Bom dia!";
+  const text = getPartSatusOfTheDay(periodo);
+
+  let border = multiply(1);
 
   const drawTextWithBorder = (
     fontBlack,
@@ -40,7 +48,7 @@ const generateImageService = async (periodo) => {
     x,
     y,
     text,
-    borderWidth = 1,
+    borderWidth = border,
     maxWidth
   ) => {
     for (let i = -borderWidth; i <= borderWidth; i++) {

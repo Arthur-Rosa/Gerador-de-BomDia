@@ -21,10 +21,6 @@ exports.generateImage = async (req, res) => {
 
 exports.count = async (req, res) => {
   try {
-    // const contador = await Contador.findOne();
-
-    console.log(contador);
-
     return res.status(200).json(contador);
   } catch (error) {
     console.error("Erro ao contar:", error);

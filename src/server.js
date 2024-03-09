@@ -16,7 +16,7 @@ app.use(express.static('public'));
 
 const corsOptions = {
   methods: "GET",
-  origin: "*",
+  origin: "gerador-de-bom-dia.vercel.app",
 };
 
 app.use(
