@@ -40,15 +40,13 @@ const generateImageService = async (periodo) => {
   const dayText = await getExactlyDay();
   const text = getPartSatusOfTheDay(periodo);
 
-  let borderWidth = multiply(1);
-
   const drawTextWithBorder = (
     fontBlack,
     fontWhite,
     x,
     y,
     text,
-    borderWidth,
+    borderWidth = multiply(1),
     maxWidth
   ) => {
     for (let i = -borderWidth; i <= borderWidth; i++) {
